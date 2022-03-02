@@ -64,14 +64,14 @@ class Signup extends React.Component<SignupProps, SignupState> {
             <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input onChange={(e) => (this.state.firstName)}
+                    <Input onChange={(e) => this.setState({firstName: e.target.value})}
                     name="firstName"
                     value={this.state.firstName}/>
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="lastName">Last Name</Label>
                     <Input
-                    onChange={(e) => (this.state.lastName)}
+                    onChange={(e) => this.setState({lastName: e.target.value})}
                     name="lastName"
                     value={this.state.lastName}
                     />
@@ -79,7 +79,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
                 <FormGroup>
                     <Label htmlFor="email">Email</Label>
                     <Input
-                    onChange={(e) => (this.state.email)}
+                    onChange={(e) => this.setState({email: e.target.value})}
                     name="email"
                     value={this.state.email}
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$"
@@ -89,7 +89,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
                 <FormGroup>
                     <Label htmlFor="username">Username</Label>
                     <Input
-                    onChange={(e) => (this.state.username)}
+                    onChange={(e) => this.setState({username: e.target.value})}
                     name="username"
                     value={this.state.username}
                     />
@@ -97,7 +97,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>
                     <Input
-                    onChange={(e) => (this.state.password)}
+                    onChange={(e) => this.setState({password: e.target.value})}
                     name="password"
                     type="password"
                     value={this.state.password}

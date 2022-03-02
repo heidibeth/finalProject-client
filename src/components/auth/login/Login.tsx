@@ -51,7 +51,7 @@ class Login extends React.Component<LoginProps, LoginState> {
                     <FormGroup>
                         <Label htmlFor="username">Username</Label>
                         <Input
-                        onChange={(e) => (this.state.username)}
+                        onChange={(e) => this.setState({username: e.target.value})}
                         name="username"
                         value={this.state.username}
                         />
@@ -59,7 +59,7 @@ class Login extends React.Component<LoginProps, LoginState> {
                     <FormGroup>
                         <Label htmlFor="password">Password</Label>
                         <Input
-                        onChange={(e) => (this.state.password)}
+                        onChange={(e) => this.setState({password: e.target.value})}
                         name="password"
                         type="password"
                         value={this.state.password}
