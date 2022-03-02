@@ -59,7 +59,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
         <div>
             <Container>
             <h1>
-                Signup!
+                Signup
             </h1>
             <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
@@ -105,7 +105,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
                     />
                 </FormGroup>
                 <div>
-                    <Button type='submit'>Sign Up</Button>
+                    <Button type='submit'>Submit</Button>
                 </div>
             </Form>
             </Container>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Signup from './signup/Signup';
+import Login from './login/Login';
 
 interface AuthProps {
     updateToken: (newToken: string) => void
@@ -25,6 +26,7 @@ class Auth extends React.Component<AuthProps, AuthState> {
             <div>
                 <h1>Welcome from auth</h1>
                 <Signup updateToken={this.props.updateToken}/>
+                <Login updateToken={this.props.updateToken}/>
             </div>
          );
     }
