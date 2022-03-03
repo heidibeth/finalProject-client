@@ -44,7 +44,7 @@ class Login extends React.Component<LoginProps, LoginState> {
     render() { 
         return ( 
         <div>
-            <Container>
+            <Container style={{ width: '41%' }}>
                 <h1>Login</h1>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
@@ -64,11 +64,11 @@ class Login extends React.Component<LoginProps, LoginState> {
                         value={this.state.password}
                         />
                     </FormGroup>
-                    <div>
+                    <div className='row ps-3 pe-3 pb-3'>
                         <Button type="submit">Submit</Button>
                         <br/>
                         <br/>
-                        <p>Not a User?</p>
+                        <p className='row ps-3 pe-3 textCenter'>Not a User?</p>
                     </div>
                 </Form>
             </Container>

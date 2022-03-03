@@ -37,11 +37,13 @@ class Auth extends React.Component<AuthProps, AuthState> {
                     )}
                 </div>
                 <br/>
+                <div>
                 {this.state.isLoginVisible === true ? (
                     <Button onClick={this.handleToggle}>Signup</Button>
                 ) : (
                     <Button onClick={this.handleToggle}>Login</Button>
-                )}
+                    )}
+                    </div>
             </div>
          );
     }

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Auth from './components/auth/Auth';
+import Navbar from './components/Navbar';
 
 
 
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <Auth updateToken={updateToken}/>
      
     </div>

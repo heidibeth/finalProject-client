@@ -57,11 +57,12 @@ class Signup extends React.Component<SignupProps, SignupState> {
     render() { 
         return ( 
         <div>
-            <Container>
+            <Container style={{ width: '41%'}}>
             <h1>
                 Signup
             </h1>
             <Form onSubmit={this.handleSubmit}>
+            <div style={{ margin: 2, justifyContent: 'center', textAlign: 'center'}}>
                 <FormGroup>
                     <Label htmlFor="firstName">First Name</Label>
                     <Input onChange={(e) => this.setState({firstName: e.target.value})}
@@ -104,12 +105,13 @@ class Signup extends React.Component<SignupProps, SignupState> {
                     // minLength="5"
                     />
                 </FormGroup>
-                <div>
+                <div className='row ps-3 pe-3 pb-3'>
                     <Button type='submit'>Submit</Button>
                     <br/>
                     <br/>
-                    <p>Already a User?</p>
+                    <p className='row ps-4 pe-4'>Already a User?</p>
                 </div>
+            </div>
             </Form>
             </Container>
         </div> 
