@@ -2,14 +2,13 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Auth from './components/auth/Auth';
 import Navbar from './components/Navbar';
-
 
 
 function App() {
   const [sessionToken, setSessionToken] = useState('');
-  const [refreshUserTable, setRefreshUserTable] = useState(true);
+  const [refreshMoodTable, setRefreshMoodTable] = useState(true);
+  const [token, setToken] = useState('');
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -28,10 +27,28 @@ function App() {
     setSessionToken('');
   };
 
+
+  // const protectedViews = () => {
+  //   return sessionToken === localStorage.getItem('token') ? (
+  //     <MainPage token={sessionToken} />
+  //   ) : (
+  //     <Auth
+  //       updateToken={updateToken}
+  //       refreshUserTable={refreshUserTable}
+  //       setRefreshUserTable={setRefreshUserTable}
+  //     />
+  //   );
+  // };
+
   return (
     <div className="App">
-      <Navbar />
-      <Auth updateToken={updateToken}/>
+      <Navbar 
+        token={token}
+        updateToken={updateToken}
+        clearToken={clearToken}
+        setRefreshMoodTable={setRefreshMoodTable}
+        refreshMoodTable={refreshMoodTable}
+        />
      
     </div>
   );
