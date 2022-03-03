@@ -106,6 +106,9 @@ class Signup extends React.Component<SignupProps, SignupState> {
                 </FormGroup>
                 <div>
                     <Button type='submit'>Submit</Button>
+                    <br/>
+                    <br/>
+                    <p>Already a User?</p>
                 </div>
             </Form>
             </Container>

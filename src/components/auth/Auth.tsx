@@ -8,7 +8,7 @@ interface AuthProps {
 }
  
 interface AuthState {
-    isLoginVisible: true
+    isLoginVisible: boolean;
 }
  
 class Auth extends React.Component<AuthProps, AuthState> {
@@ -19,20 +19,29 @@ class Auth extends React.Component<AuthProps, AuthState> {
 
 
     handleToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
-        // this.state.setisLoginVisible(!this.state.isLoginVisible);
+        if (this.state.isLoginVisible === true) {
+            this.setState({ isLoginVisible: false });
+        } else {
+            this.setState({ isLoginVisible: true });
+        }
     }
 
     render() { 
         return ( 
             <div>
-                <h1>Welcome from auth</h1>
-                {this.state.isLoginVisible === true ? (
-                <Signup updateToken={this.props.updateToken}/> 
-                ) : (
-                <Login updateToken={this.props.updateToken}/>
-                )}
+                <div>
+                    {this.state.isLoginVisible === true ? (
+                        <Login updateToken={this.props.updateToken}/>
+                     ) : (
+                        <Signup updateToken={this.props.updateToken}/> 
+                    )}
+                </div>
                 <br/>
-                <Button onClick={this.handleToggle}>Signup/Login</Button>
+                {this.state.isLoginVisible === true ? (
+                    <Button onClick={this.handleToggle}>Signup</Button>
+                ) : (
+                    <Button onClick={this.handleToggle}>Login</Button>
+                )}
             </div>
          );
     }

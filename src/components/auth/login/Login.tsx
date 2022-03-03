@@ -66,6 +66,9 @@ class Login extends React.Component<LoginProps, LoginState> {
                     </FormGroup>
                     <div>
                         <Button type="submit">Submit</Button>
+                        <br/>
+                        <br/>
+                        <p>Not a User?</p>
                     </div>
                 </Form>
             </Container>
