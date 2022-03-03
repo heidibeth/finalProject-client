@@ -34,7 +34,6 @@ class Login extends React.Component<LoginProps, LoginState> {
         .then((response) => response.json())
         .then((data) => {
           this.props.updateToken(data.sessionToken);
-        //   this.props.setRefreshUserTable(!this.props.refreshUserTable);
         })
         .catch(error => {
             console.error('Error:', error);
