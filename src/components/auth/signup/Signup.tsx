@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Form, FormGroup, Label, Input, Button, Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 interface SignupProps { 
@@ -109,7 +110,9 @@ class Signup extends React.Component<SignupProps, SignupState> {
                     <Button type='submit'>Submit</Button>
                     <br/>
                     <br/>
+                    <Link to='/login'>
                     <p className='row ps-4 pe-4'>Already a User?</p>
+                    </Link>
                 </div>
             </div>
             </Form>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FormGroup, Label, Input, Button, Container, Form } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 interface LoginProps {
     updateToken: (newToken: string) => void
@@ -68,7 +69,9 @@ class Login extends React.Component<LoginProps, LoginState> {
                         <Button type="submit">Submit</Button>
                         <br/>
                         <br/>
+                        <Link to='/register'>
                         <p className='row ps-3 pe-3 textCenter'>Not a User?</p>
+                        </Link>
                     </div>
                 </Form>
             </Container>

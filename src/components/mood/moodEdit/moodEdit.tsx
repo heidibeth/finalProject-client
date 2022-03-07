@@ -1,13 +1,27 @@
 import * as React from 'react';
-import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { FormGroup, ModalBody, Modal, Form, Input, Label, Button, ModalHeader, ModalFooter, Container, } from 'reactstrap';
 
-interface MoodCreateProps {
+
+interface MoodEditProps {
     token: string,
     refreshMoodTable: boolean,
     setRefreshMoodTable: React.Dispatch<React.SetStateAction<boolean>>,
+    moodEntryToUpdate: MoodEntryAPI,
+    updateOff: (value: boolean) => void,
+    fetchMood: () => void
 }
  
-interface MoodCreateState {
+interface MoodEditState {
+    date: string,
+    mood: string,
+    struggleWith: string,
+    gratefulFor: string,
+    goalForWeek: string,
+    summaryOfDay: string
+}
+
+export interface MoodEntryAPI {
+    id: number,
     date: string,
     mood: string,
     struggleWith: string,
@@ -16,13 +30,13 @@ interface MoodCreateState {
     summaryOfDay: string
 }
  
-class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
+class MoodEdit extends React.Component<MoodEditProps, MoodEditState> {
     excited = '🤗'
     happy = '😀'
     ok = '😐'
     sad = '😢'
     struggling = '💩'
-    constructor(props: MoodCreateProps) {
+    constructor(props: MoodEditProps) {
         super(props);
 
         this.state = { 
@@ -37,8 +51,8 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
 
     handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
         event.preventDefault();
-        fetch('http://localhost:4000/moodlog/', {
-            method: 'POST',
+        fetch(`http://localhost:4000/moodlog/${this.props.moodEntryToUpdate.id}`, {
+            method: 'PUT',
             body: JSON.stringify({
               date: this.state.date,
               mood: this.state.mood,
@@ -56,7 +70,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
         .then((data) => {
             console.log(data);
           this.props.setRefreshMoodTable(!this.props.refreshMoodTable);
-            alert('Mood Log Created');
+            alert('Mood Log Updated');
             this.setState({date: '', mood: '', struggleWith: '', gratefulFor: '', goalForWeek: '', summaryOfDay: ''})
         })
         .catch(error => {
@@ -193,4 +207,4 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
     }
 }
  
-export default MoodCreate;
+export default MoodEdit;
