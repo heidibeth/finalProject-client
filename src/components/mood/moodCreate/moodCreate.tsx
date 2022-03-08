@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { MoodCreateButton } from './moodCreateButton';
 
 interface MoodCreateProps {
     token: string,
@@ -69,7 +70,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
             <div style={{ textAlign: 'center' }}>
             <Container style={{ width: '41%' }}>
                 <h2 style={{ textAlign: 'center' }}>How Are You Feeling?</h2>
-                <Form onSubmit={this.handleSubmit}>
+                <Form >
                 <FormGroup>
                     <Label htmlFor="date" />
                     <Input
@@ -184,9 +185,10 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                     />
                 </FormGroup>
                 <FormGroup style={{ textAlign: 'center' }}>
-                    <Button className='mb-5' type="submit">Submit</Button>
                 </FormGroup>
                 </Form>
+                  <MoodCreateButton token={this.props.token} date={this.state.date} mood={this.state.mood} struggleWith={this.state.struggleWith} gratefulFor={this.state.gratefulFor} goalForWeek={this.state.goalForWeek} summaryOfDay={this.state.summaryOfDay} />
+                    {/* <Button className='mb-5' type="submit">Submit</Button> */}
             </Container>
           </div>
          );

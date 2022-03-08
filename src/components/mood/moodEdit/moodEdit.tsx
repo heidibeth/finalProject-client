@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormGroup, ModalBody, Modal, Form, Input, Label, Button, ModalHeader, ModalFooter, Container, } from 'reactstrap';
+import { FormGroup, Form, Input, Label, Button, Container, } from 'reactstrap';
 
 
 interface MoodEditProps {

@@ -1,17 +1,31 @@
-import { AnyARecord } from 'dns';
 import * as React from 'react';
 import { Table, Button, Container } from 'reactstrap';
-import { IGetMoodMine } from '../moodInex.interface';
+import MoodEdit from '../moodEdit/moodEdit';
+import { IGetMoodMine } from '../moodIndex.interface';
 
 interface MoodTableProps {
   token: string
-  // editUpdateMoodEntry: (e: any) => void,
-  // updateOn: React.Dispatch<React.SetStateAction<boolean>>
+  editUpdateMoodEntry: (e: any) => void,
+  updateOn: (e: boolean)=> void
+  setRefreshMoodTable: React.Dispatch<React.SetStateAction<boolean>>
+  refreshMoodTable: boolean
+  updateOff: (e: boolean)=> void
+  moodEntryToUpdate: MoodEntryAPI;
 }
 
 interface MoodTableState {
   moodEntries: IGetMoodMine[],
     
+}
+
+export interface MoodEntryAPI {
+  id: number,
+  date: string,
+  mood: string,
+  struggleWith: string,
+  gratefulFor: string,
+  goalForWeek: string,
+  summaryOfDay: string
 }
  
 class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
@@ -51,12 +65,23 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
     }
   }
 
+  componentDidMount() {
+    if (this.props.token){
+      this.fetchMood()
+    }
+  }
+
     moodTableMapper = () => {
       return this.state.moodEntries.map((moodEntry, index) => {
         return (
           <tr key={index}>
             <td>{moodEntry.id}</td>
             <td>{moodEntry.date}</td>
+            <td>{moodEntry.mood}</td>
+            <td>{moodEntry.struggleWith}</td>
+            <td>{moodEntry.gratefulFor}</td>
+            <td>{moodEntry.goalForWeek}</td>
+            <td>{moodEntry.summaryOfDay}</td>
             <td>
               <Button
                 style={{
@@ -68,10 +93,10 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
                   width: '100',
                   backgroundColor: '#86b13d',
                 }}
-                // onClick={() => {
-                //   this.props.editUpdateMoodEntry(moodEntry);
-                //   this.props.updateOn(true);
-                // }}
+                onClick={() => {
+                  this.props.editUpdateMoodEntry(moodEntry);
+                  this.props.updateOn(true);
+                }}
               >
                 Edit
               </Button>
@@ -84,9 +109,9 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
                   width: 100,
                   backgroundColor: '#fe9233',
                 }}
-                // onClick={() => {
-                //   this.deleteMoodEntry(moodEntry);
-                // }}
+                onClick={() => {
+                  this.deleteMoodEntry(moodEntry);
+                }}
               >
                 Delete
               </Button>{' '}
@@ -120,6 +145,14 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
           </Table>
         </div>
       </Container>
+      <MoodEdit 
+                moodEntryToUpdate={this.props.moodEntryToUpdate}
+                token={this.props.token}
+                updateOff={this.props.updateOff}
+                fetchMood={this.fetchMood}
+                refreshMoodTable={this.props.refreshMoodTable} 
+                setRefreshMoodTable={this.props.setRefreshMoodTable}
+                />
       </div>  
       );
     }

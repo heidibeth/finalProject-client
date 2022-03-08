@@ -46,11 +46,11 @@ class Login extends React.Component<LoginProps, LoginState> {
         return ( 
         <div>
             <Container style={{ width: '41%' }}>
-                <h1>Login</h1>
+                <h1 className='py-3'>Login</h1>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label htmlFor="username">Username</Label>
-                        <Input
+                        <Input style={{color: '#FFE194'}}
                         onChange={(e) => this.setState({username: e.target.value})}
                         name="username"
                         value={this.state.username}
@@ -65,12 +65,12 @@ class Login extends React.Component<LoginProps, LoginState> {
                         value={this.state.password}
                         />
                     </FormGroup>
-                    <div className='row ps-3 pe-3 pb-3'>
+                    <div className='row ps-5 pe-5 pb-3 pt-4'>
                         <Button type="submit">Submit</Button>
                         <br/>
                         <br/>
                         <Link to='/register'>
-                        <p className='row ps-3 pe-3 textCenter'>Not a User?</p>
+                        <p className='row ps-4 pe-4 pt-3' style={{justifyContent: 'center', textDecoration: 'none'}}>Not a User?</p>
                         </Link>
                     </div>
                 </Form>

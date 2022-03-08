@@ -59,7 +59,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
         return ( 
         <div>
             <Container style={{ width: '41%'}}>
-            <h1>
+            <h1 className='py-3'>
                 Signup
             </h1>
             <Form onSubmit={this.handleSubmit}>
@@ -106,12 +106,12 @@ class Signup extends React.Component<SignupProps, SignupState> {
                     // minLength="5"
                     />
                 </FormGroup>
-                <div className='row ps-3 pe-3 pb-3'>
+                <div className='row ps-5 pe-5 pb-3 pt-4'>
                     <Button type='submit'>Submit</Button>
                     <br/>
                     <br/>
-                    <Link to='/login'>
-                    <p className='row ps-4 pe-4'>Already a User?</p>
+                    <Link to='/'>
+                    <p className='row ps-4 pe-4 pt-3 pb-4' style={{justifyContent: 'center', textDecoration: 'none'}}>Already a User?</p>
                     </Link>
                 </div>
             </div>

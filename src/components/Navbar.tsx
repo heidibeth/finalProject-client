@@ -39,14 +39,14 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
 render() {
     return (
       <nav className="navbar fixed-bottom navbar-expand-lg navbar-light align-center">
-        <a className="navbar-brand" href="/login"><BiHealth/>Seize The Day</a>
+        <a className="navbar-brand" href="/"><BiHealth/>Seize The Day</a>
         <Button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </Button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#"><BiHomeSmile/> Home<span className="sr-only"></span></a>
+              <a className="nav-link" href="/"><BiHomeSmile/> Home<span className="sr-only"></span></a>
             </li>
             <li className="nav-item">
               <NavLink to='todo' style={{ textDecoration: 'none' }}>
@@ -60,11 +60,11 @@ render() {
             </li>
             <li className="nav-item">
               <NavLink to='chart' style={{ textDecoration: 'none' }}>
-                <a className="nav-link" href="#"><RiLineChartLine/>Mood Chart</a>
+                <a className="nav-link" href="chart"><RiLineChartLine/>Mood Chart</a>
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to='logout' style={{ textDecoration: 'none' }}>
+              <NavLink to='/' style={{ textDecoration: 'none' }}>
                 <a className="nav-link" onClick={this.clearToken}><FiLogOut/> Logout</a>
               </NavLink>
             </li>

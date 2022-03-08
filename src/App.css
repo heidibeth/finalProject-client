@@ -1,5 +1,5 @@
 body {
-  background-color: #F2E3C9;
+  background-color: #E8F6EF;
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -10,4 +10,8 @@ Input {
 
 .navbar {
   background-color: #7ECFC0;
+}
+
+.dashIcon {
+  background-color: #FFE194;
 }
