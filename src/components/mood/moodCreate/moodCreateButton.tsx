@@ -26,7 +26,7 @@ export const MoodCreateButton=(props:any)=>{
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            navigate("/moodlog/table")
+            navigate("/table")
         })
         .catch(error => {
             console.error('Error:', error);
@@ -37,7 +37,7 @@ export const MoodCreateButton=(props:any)=>{
 
     return (
         <div>
-            <Button className='mb-5' onClick={handleSubmit}>Submit</Button>
+            <Button className='mb-3' onClick={handleSubmit}>Submit</Button>
         </div>
         )
 }

@@ -1,20 +1,24 @@
 import * as React from 'react';
+import { Navigate } from 'react-router-dom';
 import { Table, Button, Container } from 'reactstrap';
 import MoodEdit from '../moodEdit/moodEdit';
-import { IGetMoodMine } from '../moodIndex.interface';
+import { IGetMoodMine } from '../moodInex.interface';
 
+import {NavigationButton} from '../../../Navigation'
 interface MoodTableProps {
   token: string
-  editUpdateMoodEntry: (e: any) => void,
-  updateOn: (e: boolean)=> void
-  setRefreshMoodTable: React.Dispatch<React.SetStateAction<boolean>>
-  refreshMoodTable: boolean
-  updateOff: (e: boolean)=> void
-  moodEntryToUpdate: MoodEntryAPI;
+  // editUpdateMoodEntry: (e: any) => void,
+  // updateOn: (e: boolean)=> void
+  // setRefreshMoodTable: React.Dispatch<React.SetStateAction<boolean>>
+  // refreshMoodTable: boolean
+  // updateOff: (e: boolean)=> void
+  // moodEntryToUpdate: MoodEntryAPI;
 }
 
 interface MoodTableState {
   moodEntries: IGetMoodMine[],
+  isOpen: boolean,
+  moodEntryToUpdate: MoodEntryAPI;
     
 }
 
@@ -31,7 +35,9 @@ export interface MoodEntryAPI {
 class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
     constructor(props: MoodTableProps) {
         super(props);
-        this.state = { moodEntries: [] };
+        this.state = { moodEntries: [],
+        isOpen: false,
+      moodEntryToUpdate: {} as MoodEntryAPI };
     };
 
     fetchMood = () => {
@@ -71,6 +77,16 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
     }
   }
 
+  handleEdit =(moodEntry: IGetMoodMine)=>{
+    this.setState({moodEntryToUpdate: moodEntry, isOpen: true})
+    console.log(moodEntry)
+  }
+
+  updateOff =()=>{
+    this.setState({isOpen: false})
+    this.fetchMood()
+  }
+
     moodTableMapper = () => {
       return this.state.moodEntries.map((moodEntry, index) => {
         return (
@@ -94,8 +110,9 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
                   backgroundColor: '#86b13d',
                 }}
                 onClick={() => {
-                  this.props.editUpdateMoodEntry(moodEntry);
-                  this.props.updateOn(true);
+                  this.handleEdit(moodEntry);
+                  // this.props.editUpdateMoodEntry(moodEntry);
+                  // this.props.updateOn(true);
                 }}
               >
                 Edit
@@ -120,7 +137,13 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
         );
       });
     };
-      
+
+    toggleModal = () => {
+      this.setState({
+        isOpen: !this.state.isOpen
+      })
+    }
+   
 
     render() { 
         return (
@@ -143,16 +166,17 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
             </thead>
             <tbody>{this.moodTableMapper()}</tbody>
           </Table>
+        <NavigationButton path="/moodlog" buttonColor="success" buttonTitle="Create New Mood Entry"/>
         </div>
       </Container>
+      { this.state.isOpen?
       <MoodEdit 
-                moodEntryToUpdate={this.props.moodEntryToUpdate}
+                moodEntryToUpdate={this.state.moodEntryToUpdate}
                 token={this.props.token}
-                updateOff={this.props.updateOff}
-                fetchMood={this.fetchMood}
-                refreshMoodTable={this.props.refreshMoodTable} 
-                setRefreshMoodTable={this.props.setRefreshMoodTable}
-                />
+                updateOff={this.updateOff}
+              
+             
+                />: null}
       </div>  
       );
     }

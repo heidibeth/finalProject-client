@@ -14,10 +14,12 @@ interface NavbarProps {
   updateToken: (newToken: string) => void
   setRefreshMoodTable: React.Dispatch<React.SetStateAction<boolean>>,
   refreshMoodTable: boolean
+  clearToken: ()=> void
   
 }
 
 interface NavbarState {
+    navbarOpen: boolean
     sessionToken: string;
 }
   
@@ -26,6 +28,7 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
     constructor(props: NavbarProps) {
       super(props);
       this.state = { 
+        navbarOpen: false,
         sessionToken: ''
          };
     }
@@ -35,12 +38,23 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
       this.setState({sessionToken: ''});
     };
 
+    // handleToggle = () => {
+    //   if (navbarOpen === true)
+    //   this.setState({ navbarOpen(!navbarOpen)})
+    // }
+
 
 render() {
     return (
       <nav className="navbar fixed-bottom navbar-expand-lg navbar-light align-center">
         <a className="navbar-brand" href="/"><BiHealth/>Seize The Day</a>
-        <Button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <Button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" 
+        // onClick={handleToggle}
+        >
+
+          {this.state.navbarOpen ? 'Close' : 'Open'}
+
+
           <span className="navbar-toggler-icon"></span>
         </Button>
         <div className="collapse navbar-collapse" id="navbarNav">
@@ -65,7 +79,7 @@ render() {
             </li>
             <li className="nav-item">
               <NavLink to='/' style={{ textDecoration: 'none' }}>
-                <a className="nav-link" onClick={this.clearToken}><FiLogOut/> Logout</a>
+                <a className="nav-link" onClick={this.props.clearToken}><FiLogOut/> Logout</a>
               </NavLink>
             </li>
           </ul>

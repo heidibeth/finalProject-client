@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { FormGroup, Form, Input, Label, Button, Container, } from 'reactstrap';
+import { ModalTitle } from 'react-bootstrap';
+import { FormGroup, Form, Input, Label, Button, Container, Modal, ModalHeader, } from 'reactstrap';
 
 
 interface MoodEditProps {
     token: string,
-    refreshMoodTable: boolean,
-    setRefreshMoodTable: React.Dispatch<React.SetStateAction<boolean>>,
+   
     moodEntryToUpdate: MoodEntryAPI,
-    updateOff: (value: boolean) => void,
-    fetchMood: () => void
+
+    updateOff: () => void,
+    
 }
  
 interface MoodEditState {
@@ -40,12 +41,13 @@ class MoodEdit extends React.Component<MoodEditProps, MoodEditState> {
         super(props);
 
         this.state = { 
-            date: '',
-            mood: '',
-            struggleWith: '',
-            gratefulFor: '',
-            goalForWeek: '',
-            summaryOfDay: ''
+            date: this.props.moodEntryToUpdate.date,
+            mood: this.props.moodEntryToUpdate.mood,
+            struggleWith: this.props.moodEntryToUpdate.struggleWith,
+            gratefulFor: this.props.moodEntryToUpdate.gratefulFor,
+            goalForWeek: this.props.moodEntryToUpdate.goalForWeek,
+            summaryOfDay: this.props.moodEntryToUpdate.summaryOfDay
+          
         };
     }
 
@@ -69,20 +71,42 @@ class MoodEdit extends React.Component<MoodEditProps, MoodEditState> {
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-          this.props.setRefreshMoodTable(!this.props.refreshMoodTable);
-            alert('Mood Log Updated');
-            this.setState({date: '', mood: '', struggleWith: '', gratefulFor: '', goalForWeek: '', summaryOfDay: ''})
+            this.props.updateOff()
+         
         })
         .catch(error => {
             console.error('Error:', error);
           });
     }
 
+
     render() { 
         return ( 
             <div style={{ textAlign: 'center' }}>
+              {/* <Button
+                style={{
+                  justifyContent: 'center',
+                  borderWidth: '0',
+                  textAlign: 'center',
+                  alignItems: 'center',
+                  marginRight: '50',
+                  width: '100',
+                  backgroundColor: '#86b13d',
+                }}
+                onClick={() => {
+                  this.props.editUpdateMoodEntry();
+                  this.props.updateOn(true);
+                  this.toggleModal();
+                }}
+              >
+                Edit
+              </Button> */}
+              <Modal isOpen={true}>
             <Container style={{ width: '41%' }}>
-                <h2 style={{ textAlign: 'center' }}>How Are You Feeling?</h2>
+              <ModalHeader>
+              
+                How Are You Feeling?
+              </ModalHeader>
                 <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                     <Label htmlFor="date" />
@@ -97,7 +121,7 @@ class MoodEdit extends React.Component<MoodEditProps, MoodEditState> {
                 <FormGroup tag="fieldset">
             <FormGroup>Mood</FormGroup>
             <FormGroup inline check>
-              <Input
+              <Input checked= {this.state.mood=="excited"}
                 type="radio"
                 name="emoji"
                 value="excited"
@@ -110,6 +134,7 @@ class MoodEdit extends React.Component<MoodEditProps, MoodEditState> {
             </FormGroup>
             <FormGroup check inline>
               <Input
+              checked= {this.state.mood=="happy"}
                 type="radio"
                 name="emoji"
                 value="happy"
@@ -202,6 +227,8 @@ class MoodEdit extends React.Component<MoodEditProps, MoodEditState> {
                 </FormGroup>
                 </Form>
             </Container>
+            <Button onClick={this.props.updateOff}>Cancel</Button>
+            </Modal>
           </div>
          );
     }

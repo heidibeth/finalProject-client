@@ -1,9 +1,7 @@
 import * as React from "react";
 import MoodCreate from "./moodCreate/moodCreate";
-import MoodTable from "./moodTable/moodTable";
-import MoodEdit, { MoodEntryAPI } from "./moodEdit/moodEdit";
-import { IGetMoodMine } from "./moodIndex.interface";
-import { Route, Routes } from "react-router-dom";
+import { MoodEntryAPI } from "./moodEdit/moodEdit";
+import { IGetMoodMine } from "./moodInex.interface";
 
 interface MoodIndexProps {
   token: string;
@@ -55,37 +53,19 @@ class MoodIndex extends React.Component<MoodIndexProps, MoodIndexState> {
   //   fetchMood();
   // }, [this.props.refreshMoodTable]);
 
-  //   handleToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //     if (this.state.isTableVisible === true) {
-  //         this.setState({ isTableVisible: false });
-  //     } else {
-  //         this.setState({ isTableVisible: true });
-
-  // }
+ 
 
   render() {
     return (
       <div>
         <div>
-          {/* {this.state.isTableVisible === true ? ( */}
           <h1>Hello</h1>
-          <Routes>
-          
-          {/* //  ) : ( */}
-          <Route
-            path="table"
-            element={
-              <MoodTable
+          <MoodCreate
                 token={this.props.token}
-                updateOn={this.updateOn}
-                updateOff={this.updateOff}
                 refreshMoodTable={this.props.refreshMoodTable}
-                setRefreshMoodTable={this.props.setRefreshMoodTable}
-                editUpdateMoodEntry={this.editUpdateMoodEntry}
-                moodEntryToUpdate={this.state.moodEntryToUpdate}
-              />
-            }
-          /></Routes>
+                setRefreshMoodTable={this.props.setRefreshMoodTable}/>
+  
+         
         </div>
       </div>
     );
