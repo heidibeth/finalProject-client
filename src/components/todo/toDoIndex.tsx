@@ -53,7 +53,7 @@ class ToDoIndex extends React.Component<ToDoIndexProps, ToDoIndexState> {
         return ( 
         <div>
             <div>
-                <h1>To Do List</h1>
+                <h1 className='my-3'>To Do List</h1>
                 <ToDoCreate
                     token={this.props.token}/>
             </div>

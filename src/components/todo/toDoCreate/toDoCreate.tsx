@@ -91,9 +91,8 @@ class ToDoCreate extends React.Component<ToDoCreateProps, ToDoCreateState> {
                 ...this.state,
                 isUpdated: false
             })
-            //call function that fetches all the todos
+
             this.fetchAllTodos()
-            //this.setState({toDo: '', isComplete: false})
         })
         .catch(error => {
             console.error('Error:', error);
@@ -110,9 +109,8 @@ class ToDoCreate extends React.Component<ToDoCreateProps, ToDoCreateState> {
         })
         .then((response) => response.json())
         .then((data) => {
-            //call function that fetches all the todos
             this.fetchAllTodos()
-            //this.setState({toDo: '', isComplete: false})
+
         })
         .catch(error => {
             console.error('Error:', error);
@@ -136,9 +134,9 @@ class ToDoCreate extends React.Component<ToDoCreateProps, ToDoCreateState> {
         })
         .then((response) => response.json())
         .then((data) => {
-            //call function that fetches all the todos
+
             this.fetchAllTodos()
-            //this.setState({toDo: '', isComplete: false})
+
         })
         .catch(error => {
             console.error('Error:', error);
@@ -147,7 +145,7 @@ class ToDoCreate extends React.Component<ToDoCreateProps, ToDoCreateState> {
 
     render() { 
         return ( <div className='wrapper'>
-            <Container style={{ width: '31%'}}>
+            <Container style={{ width: 'fit-content'}}>
         <div className='toDoheader'>
             <Form className='toDoInput'>
                 <Input 
@@ -165,10 +163,10 @@ class ToDoCreate extends React.Component<ToDoCreateProps, ToDoCreateState> {
                     // onChange={this.handleAddDeadline}
                     /> */}
                 {
-                    !this.state.isUpdated && <Button onClick={(e) => this.handleSubmit(e)} className='mb-3'>Add To Do</Button>
+                    !this.state.isUpdated && <Button onClick={(e) => this.handleSubmit(e)} className='my-3' style={{ backgroundColor: '#E26310', color: 'white', opacity: '0.6'}}>Add To Do</Button>
                 }
                 {
-                    this.state.isUpdated && <Button onClick={(e) => this.handleUpdateTodo(e)} className='mb-3'>Update</Button>
+                    this.state.isUpdated && <Button onClick={(e) => this.handleUpdateTodo(e)} className='mb-3' style={{ backgroundColor: '#E26310', color: 'white', opacity: '0.65'}}>Update</Button>
                 }  
             </Form>
         
@@ -177,14 +175,16 @@ class ToDoCreate extends React.Component<ToDoCreateProps, ToDoCreateState> {
                     {
                         this.state.todos.map((todo: any) => {
                             return (
-                                <li key={todo.id} style={{textAlign: 'left'}} className="mb-2">
+                                <li key={todo.id} className="mb-2">
+
+                                    <div style={{textAlign: 'left'}} >
                                     { todo.toDo }
-                                    
-                                   
+                                    </div>
+                                   <div style={{textAlign: 'right'}}>
                                     <Button style={{borderRadius: '10%', margin: '2%'}} onClick={() => this.handleEdit(todo)}>Edit</Button>
                                     
                                     <Button style={{borderRadius: '10%'}}  onClick={() => this.handleTodoDelete(todo.id)}>Delete</Button>
-                                    
+                                    </div>
                                 </li>
                             )
                         })

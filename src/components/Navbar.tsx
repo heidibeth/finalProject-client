@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import { Button, Nav } from 'reactstrap';
 import { MdOutlineMood } from 'react-icons/md';
 import { GoTasklist } from 'react-icons/go';
 import { BiHomeSmile } from 'react-icons/bi';
@@ -48,13 +48,14 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
 
 render() {
     return (
-      <nav className="navbar fixed-bottom navbar-expand-lg navbar-light align-center">
-        <a className="navbar-brand" href="/"><BiHealth/>Seize The Day</a>
+      
+      <Nav className="navbar fixed-bottom navbar-expand-lg navbar-light align-center">
+        <a className="navbar-brand" href="/" style={{opacity: '0.7'}}><BiHealth/>Seize The Day</a>
         <Button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" 
         // onClick={handleToggle}
         >
 
-          {this.state.navbarOpen ? 'Close' : 'Open'}
+          {/* {this.state.navbarOpen ? 'Close' : 'Open'} */}
 
 
           <span className="navbar-toggler-icon"></span>
@@ -76,7 +77,7 @@ render() {
             </li>
             <li className="nav-item">
               <NavLink to='chart' style={{ textDecoration: 'none' }}>
-                <a className="nav-link" href="chart"><RiLineChartLine/>Mood Chart</a>
+                <a className="nav-link" href="chart"><RiLineChartLine />Mood Chart</a>
               </NavLink>
             </li>
 
@@ -97,7 +98,7 @@ render() {
             </li>
           </ul>
         </div>
-      </nav>
+      </Nav>
   )
 }}
 

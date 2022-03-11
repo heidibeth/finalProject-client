@@ -59,7 +59,6 @@ class MoodIndex extends React.Component<MoodIndexProps, MoodIndexState> {
     return (
       <div>
         <div>
-          <h1>Hello</h1>
           <MoodCreate
                 token={this.props.token}
                 refreshMoodTable={this.props.refreshMoodTable}

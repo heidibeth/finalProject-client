@@ -71,7 +71,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
         return ( 
             <div style={{ textAlign: 'center' }}>
             <Container style={{ width: '41%' }}>
-                <h2 style={{ textAlign: 'center' }}>How Are You Feeling?</h2>
+                <h2 style={{ textAlign: 'center', marginTop: '10%', marginBottom: '5%', opacity: '0.7' }}>How Are You Feeling?</h2>
                 <Form >
                 <FormGroup>
                     <Label htmlFor="date" />
@@ -84,7 +84,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                     />
                 </FormGroup>
                 <FormGroup tag="fieldset">
-            <FormGroup>Mood</FormGroup>
+            <FormGroup style={{opacity: '0.7'}}>Mood</FormGroup>
             <FormGroup inline check>
               <Input
                 type="radio"
@@ -147,7 +147,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
             </FormGroup>
           </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="struggleWith">Struggling With:</Label>
+                    <Label className='moodLabel' htmlFor="struggleWith" style={{opacity: '0.7'}}>Struggling With:</Label>
                     <Input
                     type="text"
                     name="struggleWith"
@@ -157,7 +157,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="gratefulFor">Grateful For:</Label>
+                    <Label className='moodLabel' htmlFor="gratefulFor" style={{opacity: '0.7'}}>Grateful For:</Label>
                     <Input
                     type="text"
                     name="gratefulFor"
@@ -167,7 +167,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="goalForWeek">Goal For The Week:</Label>
+                    <Label className='moodLabel' htmlFor="goalForWeek" style={{opacity: '0.7'}}>Goal For The Week:</Label>
                     <Input
                     type="text"
                     name="goalForWeek"
@@ -177,7 +177,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="summaryOfDay">Summary of Day:</Label>
+                    <Label className='moodLabel' htmlFor="summaryOfDay" style={{opacity: '0.7'}}>Summary of Day:</Label>
                     <Input
                     type="text"
                     name="summaryOfDay"

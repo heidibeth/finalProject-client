@@ -14,8 +14,20 @@ Input {
 
 .dashIcon {
   color: #FFE194;
+  
 }
 
 ul {
   list-style-type: none;
+}
+
+.moodLabel {
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-right:15px;
+}
+
+.navbar-toggler {
+  z-index: 99999;
 }

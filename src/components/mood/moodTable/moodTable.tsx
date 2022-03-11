@@ -108,7 +108,8 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
                   alignItems: 'center',
                   marginRight: '50',
                   width: '100',
-                  backgroundColor: '#86b13d',
+                  backgroundColor: '#139487',
+                  opacity: '0.6'
                 }}
                 onClick={() => {
                   this.handleEdit(moodEntry);
@@ -125,7 +126,8 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
                   borderWidth: 0,
                   textAlign: 'center',
                   width: 100,
-                  backgroundColor: '#fe9233',
+                  backgroundColor: '#E26310',
+                  opacity: '0.6'
                 }}
                 onClick={() => {
                   this.deleteMoodEntry(moodEntry);
@@ -148,7 +150,8 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
 
     render() { 
         return (
-        <div style={{marginBottom:"150px"}}><Container style={{ width: '50%' }}>
+        <div style={{marginBottom:"150px"}}>
+          <Container style={{ width: '50%', justifyContent: 'left' }}>
         <div>
           <h1>Mood Entries</h1>
         </div>

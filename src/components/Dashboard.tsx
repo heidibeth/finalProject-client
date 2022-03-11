@@ -28,24 +28,35 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
     render() { 
         return ( 
             <div>
-                <h2 className='mt-4 mb-0'>Let's Get Started</h2>
-            <Container className="d-flex vh-100">
+                <div className='header'>
+                    <h2 className='mt-5 mb-5' style={{fontSize: '50px', opacity: '0.7'}}>Let's Get Started</h2>
+                </div>
+            <Container className="d-flex">
                 <Row className='m-auto align-self-center'>
                     <Col>
-                     <CardGroup>
+                     <CardGroup className='mt-5'>
                      <div className="col-lg-4 col-md-4 col-sm-6 text-center">
-                        <Card className='mx-5 pb-5 dashIcon' style={{ backgroundColor: 'transparent', border: 'none' }}>
-                            <Link to='todo' className='mx-2 py-4 pb-5' style={{textDecoration: 'none'}}><GoTasklist size={'100px'}/><br/><br/>To Do List</Link>
+                        <Card className='mx-5 pb-5 dashIcon' style={{ backgroundColor: 'transparent', border: 'none' }}> 
+                            <Link to='todo' className='mx-2 py-2' style={{ textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
+                                <GoTasklist size={'100px'}/></Link>
+                            
+                            <Link to='todo' className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}><br/>To Do List</Link>
                         </Card>
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-6 text-center">
                         <Card className='mx-5 pb-5 dashIcon' style={{ backgroundColor: 'transparent', border: 'none' }}>
-                            <Link to='moodlog' className='mx-2 py-4 pb-5' style={{textDecoration: 'none'}}><MdOutlineMood size={'100px'}/><br/><br/>Mood Entries</Link>
+                            <Link to='moodlog' className='mx-2 py-2' style={{textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
+                                <MdOutlineMood size={'100px'}/></Link>
+                            <Link to='moodlog' className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}>
+                                <br/>Mood Entries</Link>
                         </Card>
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-6 text-center">
                         <Card className='mx-5 pb-5 dashIcon' style={{ backgroundColor: 'transparent', border: 'none' }}>       
-                            <Link to='chart' className='mx-2 py-4 pb-5' style={{textDecoration: 'none'}}><RiLineChartLine size={'100px'}/><br/><br/>Mood Chart</Link>
+                            <Link to='chart' className='mx-2 py-2' style={{textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
+                                <RiLineChartLine size={'100px'}/></Link>
+                            <Link to='chart' className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}>
+                                <br/>Mood Chart</Link>
                         </Card> 
                         </div>
                     </CardGroup>
