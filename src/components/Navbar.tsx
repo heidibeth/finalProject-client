@@ -20,7 +20,8 @@ interface NavbarProps {
 
 interface NavbarState {
     navbarOpen: boolean
-    sessionToken: string;
+    sessionToken: string
+    isLoggedIn: boolean
 }
   
   
@@ -29,7 +30,8 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
       super(props);
       this.state = { 
         navbarOpen: false,
-        sessionToken: ''
+        sessionToken: '',
+        isLoggedIn: false
          };
     }
 
@@ -77,6 +79,17 @@ render() {
                 <a className="nav-link" href="chart"><RiLineChartLine/>Mood Chart</a>
               </NavLink>
             </li>
+
+
+{/* 
+               {
+                    !this.state.isLoggedIn && <button onClick={(e) => this.handleSubmit(e)} className='mb-3'>Logout</button>
+                }
+                {
+                    this.state.isLoggedIn && <button onClick={(e) => this.handleUpdateStatus(e)} className='mb-3'>Login</button>
+                }  */}
+
+
             <li className="nav-item">
               <NavLink to='/' style={{ textDecoration: 'none' }}>
                 <a className="nav-link" onClick={this.props.clearToken}><FiLogOut/> Logout</a>

@@ -15,3 +15,7 @@ Input {
 .dashIcon {
   color: #FFE194;
 }
+
+ul {
+  list-style-type: none;
+}

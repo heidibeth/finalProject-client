@@ -35,9 +35,10 @@ export interface MoodEntryAPI {
 class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
     constructor(props: MoodTableProps) {
         super(props);
-        this.state = { moodEntries: [],
-        isOpen: false,
-      moodEntryToUpdate: {} as MoodEntryAPI };
+        this.state = { 
+          moodEntries: [],
+          isOpen: false,
+          moodEntryToUpdate: {} as MoodEntryAPI };
     };
 
     fetchMood = () => {

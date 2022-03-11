@@ -190,7 +190,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                 </FormGroup>
                 </Form>
                   <MoodCreateButton token={this.props.token} date={this.state.date} mood={this.state.mood} struggleWith={this.state.struggleWith} gratefulFor={this.state.gratefulFor} goalForWeek={this.state.goalForWeek} summaryOfDay={this.state.summaryOfDay} />
-                    {/* <Button className='mb-5' type="submit">Submit</Button> */}
+                    
                     <NavigationButton path="/table" buttonColor="success" buttonTitle="View All Mood Entries"/>
             </Container>
           </div>

@@ -65,7 +65,7 @@ class MoodIndex extends React.Component<MoodIndexProps, MoodIndexState> {
                 refreshMoodTable={this.props.refreshMoodTable}
                 setRefreshMoodTable={this.props.setRefreshMoodTable}/>
   
-         
+        
         </div>
       </div>
     );

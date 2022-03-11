@@ -1,6 +1,5 @@
 import * as React from 'react';
-import ToDoCreate from './toDoCreate';
-import {ToDoInterface} from './toDoInterface';
+import ToDoCreate from './toDoCreate/toDoCreate';
 
 
 interface ToDoIndexProps {
@@ -13,6 +12,13 @@ interface ToDoIndexState {
     // toDoEntryToUpdate: ToDoEntryAPI
     // deadlineToAdd: number
 }
+
+export interface ToDoInterface {
+    id: number,
+    toDo: string,
+    isComplete: boolean
+}
+
  
 class ToDoIndex extends React.Component<ToDoIndexProps, ToDoIndexState> {
     constructor(props: ToDoIndexProps) {
@@ -49,7 +55,7 @@ class ToDoIndex extends React.Component<ToDoIndexProps, ToDoIndexState> {
             <div>
                 <h1>To Do List</h1>
                 <ToDoCreate
-                token={this.props.token}/>
+                    token={this.props.token}/>
             </div>
         </div>
         );

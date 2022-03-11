@@ -83,24 +83,7 @@ class MoodEdit extends React.Component<MoodEditProps, MoodEditState> {
     render() { 
         return ( 
             <div style={{ textAlign: 'center' }}>
-              {/* <Button
-                style={{
-                  justifyContent: 'center',
-                  borderWidth: '0',
-                  textAlign: 'center',
-                  alignItems: 'center',
-                  marginRight: '50',
-                  width: '100',
-                  backgroundColor: '#86b13d',
-                }}
-                onClick={() => {
-                  this.props.editUpdateMoodEntry();
-                  this.props.updateOn(true);
-                  this.toggleModal();
-                }}
-              >
-                Edit
-              </Button> */}
+             
               <Modal isOpen={true}>
             <Container style={{ width: '41%' }}>
               <ModalHeader>

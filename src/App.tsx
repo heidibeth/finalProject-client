@@ -12,6 +12,7 @@ import MoodTable from "./components/mood/moodTable/moodTable";
 import Dashboard from "./components/Dashboard";
 import ToDoIndex from "./components/todo/toDoIndex";
 import MoodCreate from "./components/mood/moodCreate/moodCreate";
+import ToDoTable from "./components/todo/toDoTable";
 
 function App() {
   const [sessionToken, setSessionToken] = useState("");
@@ -114,7 +115,7 @@ clearToken = () => {
         )}
 
         {sessionToken===localStorage.getItem('token') ? 
-          <Route path='todo' element={
+          <Route path='todo/*' element={
           <ToDoIndex
             token={sessionToken}
            />}/>
@@ -123,6 +124,7 @@ clearToken = () => {
           <Login updateToken={updateToken}/>}/>
         <Route path='register' element={
           <Signup updateToken={updateToken}/>}/></>}
+
 
         {/* {sessionToken===localStorage.getItem('token') ? 
           <Route path='chart' element={
