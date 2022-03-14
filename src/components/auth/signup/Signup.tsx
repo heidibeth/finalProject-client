@@ -48,6 +48,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
         .then((response) => response.json())
         .then((data) => {
           this.props.updateToken(data.sessionToken);
+          window.location.href = "/"
         //   this.props.setRefreshUserTable(!this.props.refreshUserTable);
         })
         .catch(error => {

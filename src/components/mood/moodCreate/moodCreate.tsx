@@ -70,12 +70,13 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
     render() { 
         return ( 
             <div style={{ textAlign: 'center' }}>
-            <Container style={{ width: '41%' }}>
+            <Container style={{ width: '47%' }}>
                 <h2 style={{ textAlign: 'center', marginTop: '10%', marginBottom: '5%', opacity: '0.7' }}>How Are You Feeling?</h2>
                 <Form >
                 <FormGroup>
                     <Label htmlFor="date" />
                     <Input
+                    style={{backgroundColor: '#E8F6EF', opacity: '0.6'}}
                     type="date"
                     name="date"
                     pattern="[0-9]{8}"
@@ -93,7 +94,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                 onChange={(e) => this.setState({mood: e.target.value})}
                 style={{ margin: '0px' }}
               />
-              <Label check htmlFor="mood" style={{ zoom: '3', margin: '0px' }}>
+              <Label className='emoji-label' check htmlFor="mood" style={{ zoom: '3', margin: '0px' }}>
                 {this.excited}
               </Label>
             </FormGroup>
@@ -105,7 +106,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                 onChange={(e) => this.setState({mood: e.target.value})}
                 style={{ margin: '0px' }}
               />
-              <Label check htmlFor="mood" style={{ zoom: '3', margin: '0px' }}>
+              <Label className='emoji-label' check htmlFor="mood" style={{ zoom: '3', margin: '0px' }}>
                 {this.happy}
               </Label>
             </FormGroup>
@@ -117,7 +118,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                 onChange={(e) => this.setState({mood: e.target.value})}
                 style={{ margin: '0px' }}
               />
-              <Label check htmlFor="mood" style={{ zoom: '3', margin: '0px' }}>
+              <Label className='emoji-label' check htmlFor="mood" style={{ zoom: '3', margin: '0px' }}>
                 {this.ok}
               </Label>
             </FormGroup>
@@ -129,7 +130,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                 onChange={(e) => this.setState({mood: e.target.value})}
                 style={{ margin: '0px' }}
               />
-              <Label check htmlFor="mood" style={{ zoom: '3', margin: '0px' }}>
+              <Label className='emoji-label' check htmlFor="mood" style={{ zoom: '3', margin: '0px' }}>
                 {this.sad}
               </Label>
             </FormGroup>
@@ -141,50 +142,82 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                 onChange={(e) => this.setState({mood: e.target.value})}
                 style={{ margin: '0px' }}
               />
-              <Label check htmlFor="mood" style={{ zoom: '3', margin: '0px' }}>
+              <Label className='emoji-label' check htmlFor="mood" style={{ zoom: '3', margin: '0px' }}>
                 {this.struggling}
               </Label>
             </FormGroup>
           </FormGroup>
                 <FormGroup>
-                    <Label className='moodLabel' htmlFor="struggleWith" style={{opacity: '0.7'}}>Struggling With:</Label>
-                    <Input
-                    type="text"
-                    name="struggleWith"
-                    placeholder="What are you struggling with today?"
-                    value={this.state.struggleWith}
-                    onChange={(e) => this.setState({struggleWith: e.target.value})}
-                    />
+       
+                   <div className='row'>
+                     <div className='col-md-4'>
+                      <Label className='moodLabel' htmlFor="struggleWith" style={{opacity: '0.7'}}>Struggling With:</Label></div>
+                    <div className='col-md-8'>
+                      <Input
+                      type="text"
+                      name="struggleWith"
+                      placeholder="What do you struggle with today?"
+                      value={this.state.struggleWith}
+                      style={{backgroundColor: '#E8F6EF'}}
+                      onChange={(e) => this.setState({struggleWith: e.target.value})}
+                      />
+                  </div>
+                    </div>
                 </FormGroup>
                 <FormGroup>
-                    <Label className='moodLabel' htmlFor="gratefulFor" style={{opacity: '0.7'}}>Grateful For:</Label>
+
+                <div className='row'>
+                     <div className='col-md-4'>
+                     <Label className='moodLabel' htmlFor="gratefulFor" style={{opacity: '0.7'}}>Grateful For:</Label></div>
+                    <div className='col-md-8'>
                     <Input
                     type="text"
                     name="gratefulFor"
-                    placeholder="What are you grateful for today?"
+                    placeholder="What are you grateful for?"
                     value={this.state.gratefulFor}
+                    style={{backgroundColor: '#E8F6EF'}}
                     onChange={(e) => this.setState({gratefulFor: e.target.value})}
                     />
+                  </div>
+                    </div>
+
                 </FormGroup>
                 <FormGroup>
-                    <Label className='moodLabel' htmlFor="goalForWeek" style={{opacity: '0.7'}}>Goal For The Week:</Label>
+
+                <div className='row'>
+                     <div className='col-md-4'>
+                     <Label className='moodLabel' htmlFor="goalForWeek" style={{opacity: '0.7'}}>Goal For The Week:</Label></div>
+                    <div className='col-md-8'>
                     <Input
                     type="text"
                     name="goalForWeek"
-                    placeholder="What is your goal for the week ahead?"
+                    placeholder="What can you accomplish this week?"
                     value={this.state.goalForWeek}
+                    style={{backgroundColor: '#E8F6EF'}}
                     onChange={(e) => this.setState({goalForWeek: e.target.value})}
                     />
+                  </div>
+                    </div>
+
                 </FormGroup>
                 <FormGroup>
-                    <Label className='moodLabel' htmlFor="summaryOfDay" style={{opacity: '0.7'}}>Summary of Day:</Label>
+
+
+                <div className='row'>
+                     <div className='col-md-4'>
+                     <Label className='moodLabel' htmlFor="summaryOfDay" style={{opacity: '0.7'}}>Summary of Day:</Label></div>
+                    <div className='col-md-8'>
                     <Input
                     type="text"
                     name="summaryOfDay"
-                    placeholder="What were some highlights of your day?"
+                    placeholder="How was your day?"
                     value={this.state.summaryOfDay}
+                    style={{backgroundColor: '#E8F6EF'}}
                     onChange={(e) => this.setState({summaryOfDay: e.target.value})}
                     />
+                  </div>
+                    </div>
+
                 </FormGroup>
                 <FormGroup style={{ textAlign: 'center' }}>
                 </FormGroup>

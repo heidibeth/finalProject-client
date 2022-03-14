@@ -171,25 +171,25 @@ class ToDoCreate extends React.Component<ToDoCreateProps, ToDoCreateState> {
             </Form>
         
             <div className='toDoList'>
-                <ul>
-                    {
-                        this.state.todos.map((todo: any) => {
-                            return (
-                                <li key={todo.id} className="mb-2">
-
-                                    <div style={{textAlign: 'left'}} >
-                                    { todo.toDo }
+                {
+                   this.state.todos.map((todo: any) => {
+                       return (
+                            <div className='list-area mb-3 mt-3'>
+                                <div className='row'>
+                                    <div className='col-md-6'>
+                                        <span>{ todo.toDo }</span>
                                     </div>
-                                   <div style={{textAlign: 'right'}}>
-                                    <Button style={{borderRadius: '10%', margin: '2%'}} onClick={() => this.handleEdit(todo)}>Edit</Button>
-                                    
-                                    <Button style={{borderRadius: '10%'}}  onClick={() => this.handleTodoDelete(todo.id)}>Delete</Button>
+                                    <div className='col-md-3'>
+                                        <Button style={{borderRadius: '10%', margin: '2%'}} onClick={() => this.handleEdit(todo)}>Edit</Button>
                                     </div>
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
+                                    <div className='col-md-3'>
+                                        <Button style={{borderRadius: '10%'}}  onClick={() => this.handleTodoDelete(todo.id)}>Delete</Button>
+                                    </div>
+                                </div>
+                            </div>
+                       )
+                   }) 
+                }
             </div>
         </div> 
         </Container>

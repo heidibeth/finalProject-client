@@ -13,6 +13,10 @@ import Dashboard from "./components/Dashboard";
 import ToDoIndex from "./components/todo/toDoIndex";
 import MoodCreate from "./components/mood/moodCreate/moodCreate";
 import ToDoTable from "./components/todo/toDoTable";
+import MoodChart from "./components/chart/moodChart";
+import AllUsers from "./components/users/AllUsers";
+import AllToDos from "./components/todo/AllToDos";
+import AllMoods from "./components/mood/AllMoods";
 
 function App() {
   const [sessionToken, setSessionToken] = useState("");
@@ -67,6 +71,18 @@ clearToken = () => {
             />
           </>
         )}
+
+        {
+          sessionToken === localStorage.getItem("token") && <Route path="/all-users" element={<AllUsers />} />
+        }
+
+        {
+          sessionToken === localStorage.getItem("token") && <Route path="/all-moods" element={<AllMoods />} />
+        }
+
+        {
+          sessionToken === localStorage.getItem("token") && <Route path="/all-todos" element={<AllToDos />} />
+        }
 
         {sessionToken === localStorage.getItem("token") ? (
           <Route
@@ -126,17 +142,19 @@ clearToken = () => {
           <Signup updateToken={updateToken}/>}/></>}
 
 
-        {/* {sessionToken===localStorage.getItem('token') ? 
-          <Route path='chart' element={
-          <ChartIndex 
-            token={sessionToken}
-            setRefreshMoodTable={setRefreshMoodTable}
-            refreshMoodTable={refreshMoodTable}/>}/>
+        {sessionToken===localStorage.getItem('token') ? 
+          <Route path='/chart' element={
+          <MoodChart 
+            // token={sessionToken}
+            // setRefreshMoodTable={setRefreshMoodTable}
+            // refreshMoodTable={refreshMoodTable}
+            />}
+            />
       
         : <> <Route path='/' element={
           <Login updateToken={updateToken}/>}/>
         <Route path='register' element={
-          <Signup updateToken={updateToken}/>}/></>} */}
+          <Signup updateToken={updateToken}/>}/></>}
       </Routes>
 
     </div>

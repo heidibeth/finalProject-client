@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
-import { Button, Nav } from 'reactstrap';
+import { Button } from 'bootstrap';
 import { MdOutlineMood } from 'react-icons/md';
 import { GoTasklist } from 'react-icons/go';
 import { BiHomeSmile } from 'react-icons/bi';
@@ -49,18 +49,19 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
 render() {
     return (
       
-      <Nav className="navbar fixed-bottom navbar-expand-lg navbar-light align-center">
+      
+      <nav className="navbar fixed-bottom navbar-expand-lg navbar-light align-center">
         <a className="navbar-brand" href="/" style={{opacity: '0.7'}}><BiHealth/>Seize The Day</a>
-        <Button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" 
-        // onClick={handleToggle}
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" 
+        // onClick={() => alert("test")}
         >
 
           {/* {this.state.navbarOpen ? 'Close' : 'Open'} */}
 
 
           <span className="navbar-toggler-icon"></span>
-        </Button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        </button>
+        <div className="navbar-collapse collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item active">
               <a className="nav-link" href="/"><BiHomeSmile/> Home<span className="sr-only"></span></a>
@@ -84,21 +85,23 @@ render() {
 
 {/* 
                {
-                    !this.state.isLoggedIn && <button onClick={(e) => this.handleSubmit(e)} className='mb-3'>Logout</button>
+                    !this.state.isLoggedIn && <button onClick={(e) => this. className='mb-3'>Logout</button>
                 }
                 {
-                    this.state.isLoggedIn && <button onClick={(e) => this.handleUpdateStatus(e)} className='mb-3'>Login</button>
+                    this.state.isLoggedIn && <button onClick={(e) => this.className='mb-3'>Login</button>
                 }  */}
 
 
             <li className="nav-item">
-              <NavLink to='/' style={{ textDecoration: 'none' }}>
+              {
+                localStorage.getItem("token") && <NavLink to='/' style={{ textDecoration: 'none' }}>
                 <a className="nav-link" onClick={this.props.clearToken}><FiLogOut/> Logout</a>
               </NavLink>
+              }
             </li>
           </ul>
         </div>
-      </Nav>
+      </nav>
   )
 }}
 

@@ -85,7 +85,7 @@ class MoodEdit extends React.Component<MoodEditProps, MoodEditState> {
             <div style={{ textAlign: 'center' }}>
              
               <Modal isOpen={true}>
-            <Container style={{ width: '41%' }}>
+            <Container style={{ width: '81%' }}>
               <ModalHeader>
               
                 How Are You Feeling?
@@ -206,7 +206,7 @@ class MoodEdit extends React.Component<MoodEditProps, MoodEditState> {
                     />
                 </FormGroup>
                 <FormGroup style={{ textAlign: 'center' }}>
-                    <Button className='mb-5' type="submit">Submit</Button>
+                    <Button className='mb-5' type="submit" style={{ backgroundColor: '##B8DFD8'}}>Submit</Button>
                 </FormGroup>
                 </Form>
             </Container>

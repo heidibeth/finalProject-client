@@ -37,7 +37,7 @@ export const MoodCreateButton=(props:any)=>{
 
     return (
         <div>
-            <Button className='mb-3' onClick={handleSubmit}>Submit</Button>
+            <Button className='mb-3' onClick={handleSubmit} style={{ backgroundColor: '##B8DFD8'}}>Submit</Button>
         </div>
         )
 }
