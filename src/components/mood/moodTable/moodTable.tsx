@@ -7,6 +7,7 @@ import { IGetMoodMine } from '../moodInex.interface';
 import {NavigationButton} from '../../../Navigation'
 interface MoodTableProps {
   token: string
+  URL: string
   // editUpdateMoodEntry: (e: any) => void,
   // updateOn: (e: boolean)=> void
   // setRefreshMoodTable: React.Dispatch<React.SetStateAction<boolean>>
@@ -42,7 +43,7 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
     };
 
     fetchMood = () => {
-      fetch('http://localhost:4000/moodlog/mine', {
+      fetch(this.props.URL, {
         method: 'GET',
         headers: new Headers({
           'Content-Type': 'application/json',

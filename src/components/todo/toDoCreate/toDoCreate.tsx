@@ -3,7 +3,8 @@ import {Form, Button, Input, Container} from 'reactstrap';
 // import {NavigationButton} from '../../../Navigation'
 
 interface ToDoCreateProps {
-    token: string
+    token: string,
+    URL: string
 }
  
 interface ToDoCreateState {
@@ -121,7 +122,7 @@ class ToDoCreate extends React.Component<ToDoCreateProps, ToDoCreateState> {
     handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         // console.log(this.state.itemToAdd)
-        fetch('http://localhost:4000/todo/', {
+        fetch(this.props.URL, {
             method: 'POST',
             body: JSON.stringify({
               toDo: this.state.itemToAdd,

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 interface LoginProps {
     updateToken: (newToken: string) => void
+    updateIsAdmin: (adminStatus: boolean) => void
 }
  
 interface LoginState {
@@ -35,6 +36,7 @@ class Login extends React.Component<LoginProps, LoginState> {
         .then((response) => response.json())
         .then((data) => {
           this.props.updateToken(data.sessionToken);
+          this.props.updateIsAdmin(data.adminStatus);
         })
         .catch(error => {
             console.error('Error:', error);

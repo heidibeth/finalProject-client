@@ -9,6 +9,7 @@ import {
     Legend,
   } from 'chart.js';
   import { Bar } from 'react-chartjs-2';
+import { IGetMoodMine } from '../mood/moodInex.interface';
   
   ChartJS.register(
     CategoryScale,
@@ -48,7 +49,7 @@ import {
     datasets: [
       {
         label: 'Dataset 1',
-        data: [10, 2, 4 , 5, 3],
+        data: [0, 0, 0 , 0, 0],
         backgroundColor: 'rgb(255, 99, 132)',
       },
     //   {
@@ -65,23 +66,83 @@ import {
   };
 
 interface MoodChartProps {
-    
+    token: string
+    URL: string
 }
  
 interface MoodChartState {
-    
-}
+    moodEntries: IGetMoodMine[],
+    filteredArray: number[],
+    newData: {
+        labels: string[];
+        datasets: {
+            label: string;
+            data: number[];
+            backgroundColor: string;
+        }[]
+},
+showChart: boolean}
  
 class MoodChart extends React.Component<MoodChartProps, MoodChartState> {
     constructor(props: MoodChartProps) {
         super(props);
-        // this.state = { :  };
+        this.state = { 
+            moodEntries: [],
+            filteredArray: [0, 0, 0, 0, 0],
+            newData: data ,
+            showChart:false
+    };
     }
+
+    componentDidUpdate(prevProps: MoodChartProps, prevState: MoodChartState) {
+        if (prevState.filteredArray !== this.state.filteredArray) {
+      
+            let clonedData = data
+            clonedData.datasets[0].data = this.state.filteredArray
+            this.setState({newData: {...this.state.newData, ...clonedData}, showChart:true})
+        } 
+        if (prevState.moodEntries !== this.state.moodEntries) {
+            this.buildFilterArray();
+        }
+    }
+
+
+    fetchMood = () => {
+        fetch(this.props.URL, {
+          method: 'GET',
+          headers: new Headers({
+            'Content-Type': 'application/json',
+            Authorization: this.props.token,
+          }),
+        })
+          .then((res) => res.json())
+          .then((logData) => {
+            this.setState({moodEntries: (logData)});
+            console.log(logData);
+          });
+      };
+
+      componentDidMount() {
+          this.fetchMood();
+      }
+
+      buildFilterArray = () => {
+          const excited = this.state.moodEntries.filter(entry => entry.mood === 'excited').length
+          const happy = this.state.moodEntries.filter(entry => entry.mood === 'happy').length
+          const ok = this.state.moodEntries.filter(entry => entry.mood === 'ok').length
+          const sad = this.state.moodEntries.filter(entry => entry.mood === 'sad').length
+          const struggling = this.state.moodEntries.filter(entry => entry.mood === 'struggling').length
+
+          this.setState({filteredArray: [excited, happy, ok, sad, struggling]})
+      }
+
+
     render() {
         return (
-          <div>
+          <div style={{ marginBottom: "150px"}}>
             <h2>Line Example</h2>
-            <Bar options={options} data={data} />
+            {this.state.showChart  ? <Bar options={options} data={this.state.newData} redraw={true}/> : <h3>Loading...</h3>}
+            
           </div>
         );
       }

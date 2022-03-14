@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 interface SignupProps { 
     updateToken: (newToken: string) => void,
+    updateIsAdmin: (adminStatus: boolean) => void
 }
  
 interface SignupState {   
@@ -48,6 +49,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
         .then((response) => response.json())
         .then((data) => {
           this.props.updateToken(data.sessionToken);
+          this.props.updateIsAdmin(data.adminStatus);
           window.location.href = "/"
         //   this.props.setRefreshUserTable(!this.props.refreshUserTable);
         })

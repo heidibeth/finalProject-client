@@ -3,7 +3,8 @@ import ToDoCreate from './toDoCreate/toDoCreate';
 
 
 interface ToDoIndexProps {
-    token: string
+    token: string,
+    URL: string
 }
  
 interface ToDoIndexState {
@@ -55,7 +56,8 @@ class ToDoIndex extends React.Component<ToDoIndexProps, ToDoIndexState> {
             <div>
                 <h1 className='my-4'>To Do List</h1>
                 <ToDoCreate
-                    token={this.props.token}/>
+                    token={this.props.token}
+                    URL={this.props.URL}/>
             </div>
         </div>
         );

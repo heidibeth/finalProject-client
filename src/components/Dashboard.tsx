@@ -14,6 +14,7 @@ interface DashboardProps {
     token: string,
     refreshMoodTable: boolean,
     setRefreshMoodTable: React.Dispatch<React.SetStateAction<boolean>>,
+    isAdmin: boolean
 }
  
 interface DashboardState {
@@ -37,25 +38,25 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
                      <CardGroup className='mt-5'>
                      <div className="col-lg-4 col-md-4 col-sm-6 text-center">
                         <Card className='mx-5 pb-5 dashIcon' style={{ backgroundColor: 'transparent', border: 'none' }}> 
-                            <Link to='todo' className='mx-2 py-2' style={{ textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
+                            <Link to={this.props.isAdmin ? '/admin/todo' : 'todo'} className='mx-2 py-2' style={{ textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
                                 <GoTasklist size={'100px'}/></Link>
                             
-                            <Link to='todo' className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}><br/>To Do List</Link>
+                            <Link to={this.props.isAdmin ? '/admin/todo' : 'todo'} className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}><br/>To Do List</Link>
                         </Card>
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-6 text-center">
                         <Card className='mx-5 pb-5 dashIcon' style={{ backgroundColor: 'transparent', border: 'none' }}>
-                            <Link to='moodlog' className='mx-2 py-2' style={{textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
+                            <Link to={this.props.isAdmin ? '/admin/table' : 'moodlog'} className='mx-2 py-2' style={{textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
                                 <MdOutlineMood size={'100px'}/></Link>
-                            <Link to='moodlog' className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}>
+                            <Link to={this.props.isAdmin ? '/admin/table' : 'moodlog'} className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}>
                                 <br/>Mood Entries</Link>
                         </Card>
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-6 text-center">
                         <Card className='mx-5 pb-5 dashIcon' style={{ backgroundColor: 'transparent', border: 'none' }}>       
-                            <Link to='chart' className='mx-2 py-2' style={{textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
+                            <Link to={this.props.isAdmin ? '/admin/chart' : 'chart'} className='mx-2 py-2' style={{textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
                                 <RiLineChartLine size={'100px'}/></Link>
-                            <Link to='chart' className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}>
+                            <Link to={this.props.isAdmin ? '/admin/chart' : 'chart'} className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}>
                                 <br/>Mood Chart</Link>
                         </Card> 
                         </div>
