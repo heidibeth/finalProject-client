@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Navbar from "./components/Navbar";
+import NavBar from './components/Navbar';
 import MoodIndex from "./components/mood/moodIndex";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./components/auth/login/Login";
@@ -47,7 +47,7 @@ function App() {
   };
   return (
     <div className="App">
-      <Navbar
+      <NavBar
       clearToken={clearToken}
         token={sessionToken}
         updateToken={updateToken}
