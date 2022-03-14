@@ -42,7 +42,7 @@ render() {
       <Navbar style={{ backgroundColor: '#7ECFC0'}} className="fixed-bottom" expand="lg">
         <Container>
           <div style={{justifyContent: 'left'}}>
-          <Navbar.Brand href="/" style={{opacity: '0.7'}}><BiHealth/>Seize The Day</Navbar.Brand></div>
+            <Navbar.Brand href="/" style={{opacity: '0.7'}}><BiHealth/>Seize The Day</Navbar.Brand></div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto" style={{ marginLeft: 'auto'}}>

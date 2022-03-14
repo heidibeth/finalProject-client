@@ -33,7 +33,10 @@ function App() {
     if (localStorage.getItem("isAdmin")) {
       setIsAdmin(Boolean(localStorage.getItem("isAdmin")) ?? false);
     }
+    console.log(isAdmin);
+    
   }, []);
+
 
   const updateToken = (newToken: string) => {
     localStorage.setItem("token", newToken);
@@ -56,15 +59,16 @@ function App() {
       />
 
       <Routes>
-        <Route path="/table" element={sessionToken? <MoodTable URL='http://localhost:4000/moodlog/mine' token={sessionToken} />: <Navigate to="/" replace/>} />
+        <Route path="/table" element={sessionToken ? <MoodTable URL='http://localhost:4000/moodlog/mine' token={sessionToken} /> : <Navigate to="/" replace/>} />
 
-        <Route path="/admin/table" element={sessionToken? <MoodTable URL='http://localhost:4000/admin/all-moods' token={sessionToken} />: setTimeout(() => <Navigate to="/" replace/>, 1000)} />
+        <Route path="/admin/table" element={isAdmin ? <MoodTable URL='http://localhost:4000/admin/all-moods' token={sessionToken} /> : setTimeout(() => <Navigate to="/" replace/>, 1000)} />
 
-        <Route path="/admin/chart" element={sessionToken? <MoodChart URL='http://localhost:4000/admin/all-moods' token={sessionToken} />:setTimeout(()=> <Navigate to="/" replace/>, 1000)} />
+        <Route path="/admin/chart" element={sessionToken ? <MoodChart URL='http://localhost:4000/admin/all-moods' token={sessionToken} />:setTimeout(()=> <Navigate to="/" replace/>, 1000)} />
 
-        <Route path="/todo" element={sessionToken? <ToDoCreate URL='http://localhost:4000/todo/' token={sessionToken} />: <Navigate to="/" replace/>} />
+        <Route path="/admin/todo" element={sessionToken ? <ToDoCreate URL='http://localhost:4000/admin/all-todos' token={sessionToken} /> : setTimeout(()=><Navigate to="/" replace/>, 1000)} />
 
-        <Route path="/admin/todo" element={sessionToken? <ToDoCreate URL='http://localhost:4000/admin/all-todos' token={sessionToken} />: setTimeout(()=><Navigate to="/" replace/>, 1000)} />
+        <Route path="/todo" element={sessionToken ? <ToDoCreate URL='http://localhost:4000/todo/' token={sessionToken} /> : <Navigate to="/" replace/>} />
+
 
         
 
@@ -107,19 +111,6 @@ function App() {
           <Login updateIsAdmin={updateIsAdmin} updateToken={updateToken}/>}/>
         <Route path='register' element={
           <Signup updateIsAdmin={updateIsAdmin} updateToken={updateToken}/>}/></>}
-
-
-        {/* {
-          sessionToken === localStorage.getItem("token") && <Route path="/all-users" element={<AllUsers />} />
-        }
-
-        {
-          sessionToken === localStorage.getItem("token") && <Route path="/all-moods" element={<AllMoods />} />
-        }
-
-        {
-          sessionToken === localStorage.getItem("token") && <Route path="/all-todos" element={<AllToDos />} />
-        } */}
       </Routes>
     </div>
   );

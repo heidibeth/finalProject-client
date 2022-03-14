@@ -32,3 +32,15 @@ ul {
       font-size: 11px !important;
   }
 }
+
+
+.moodForm{
+  width: 87%;
+}
+
+
+@media only screen and (max-width:768px){
+  .moodForm{
+    width: 100%;
+  }
+}

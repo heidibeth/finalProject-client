@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Container, Form, FormGroup, Label, Input } from 'reactstrap';
 import { MoodCreateButton } from './moodCreateButton';
 import {NavigationButton} from '../../../Navigation'
+import { Col, Row } from 'react-bootstrap';
 
 interface MoodCreateProps {
     token: string,
@@ -70,9 +71,11 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
     render() { 
         return ( 
             <div style={{ textAlign: 'center' }}>
-            <Container style={{ width: '47%' }}>
-                <h2 style={{ textAlign: 'center', marginTop: '10%', marginBottom: '5%', opacity: '0.7' }}>How Are You Feeling?</h2>
+            <Container >
                 <Form >
+              <div className="moodForm">
+                
+                <h2 style={{ textAlign: 'center', marginTop: '10%', marginBottom: '5%', opacity: '0.7' }}>How Are You Feeling?</h2>
                 <FormGroup>
                     <Label htmlFor="date" />
                     <Input
@@ -84,8 +87,12 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                     onChange={(e) => this.setState({date: e.target.value})}
                     />
                 </FormGroup>
+                </div>
                 <FormGroup tag="fieldset">
             <FormGroup style={{opacity: '0.7'}}>Mood</FormGroup>
+            <Row>
+              <Col xs='2'>
+
             <FormGroup inline check>
               <Input
                 type="radio"
@@ -97,7 +104,10 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
               <Label className='emoji-label' check htmlFor="mood" style={{ zoom: '3', margin: '0px' }}>
                 {this.excited}
               </Label>
-            </FormGroup>
+                </FormGroup>
+                </Col>
+              <Col xs='2'>
+                
             <FormGroup check inline>
               <Input
                 type="radio"
@@ -110,6 +120,9 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                 {this.happy}
               </Label>
             </FormGroup>
+                </Col>
+
+                <Col xs='2'>
             <FormGroup check inline>
               <Input
                 type="radio"
@@ -122,6 +135,10 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                 {this.ok}
               </Label>
             </FormGroup>
+                
+                </Col>
+
+                <Col xs='2'>
             <FormGroup check inline>
               <Input
                 type="radio"
@@ -134,6 +151,9 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                 {this.sad}
               </Label>
             </FormGroup>
+                
+                </Col>
+                <Col xs='2'>
             <FormGroup check inline>
               <Input
                 type="radio"
@@ -146,7 +166,13 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                 {this.struggling}
               </Label>
             </FormGroup>
+                
+                </Col>
+              
+            </Row>
           </FormGroup>
+          <div className="moodForm">
+
                 <FormGroup>
        
                    <div className='row'>
@@ -219,9 +245,11 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                     </div>
 
                 </FormGroup>
+
+            </div>
+                </Form>
                 <FormGroup style={{ textAlign: 'center' }}>
                 </FormGroup>
-                </Form>
                   <MoodCreateButton token={this.props.token} date={this.state.date} mood={this.state.mood} struggleWith={this.state.struggleWith} gratefulFor={this.state.gratefulFor} goalForWeek={this.state.goalForWeek} summaryOfDay={this.state.summaryOfDay} />
                     
                     <NavigationButton path="/table" buttonColor="success" buttonTitle="View All Mood Entries"/>

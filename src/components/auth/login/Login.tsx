@@ -36,7 +36,9 @@ class Login extends React.Component<LoginProps, LoginState> {
         .then((response) => response.json())
         .then((data) => {
           this.props.updateToken(data.sessionToken);
-          this.props.updateIsAdmin(data.adminStatus);
+          this.props.updateIsAdmin(data.user.isAdmin);
+          console.log(data.user.isAdmin);
+          
         })
         .catch(error => {
             console.error('Error:', error);

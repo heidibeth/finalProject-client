@@ -1,13 +1,8 @@
 import * as React from 'react';
 import { MdOutlineMood } from 'react-icons/md';
 import { GoTasklist } from 'react-icons/go';
-import { BiHomeSmile } from 'react-icons/bi';
 import { RiLineChartLine } from 'react-icons/ri';
-import { BiHealth } from 'react-icons/bi';
-import { NavLink, Route, Routes, Link } from 'react-router-dom'
-import ToDoIndex from './todo/toDoIndex';
-import MoodIndex from './mood/moodIndex';
-import {BrowserRouter as Router} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { Card, CardGroup, Col, Container, Row } from 'reactstrap';
 
 interface DashboardProps {
@@ -26,7 +21,12 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
         super(props);
         // this.state = { :  };
     }
+
     render() { 
+        console.log(this.props.isAdmin);
+        console.log(localStorage.getItem('isAdmin'));
+        
+        
         return ( 
             <div>
                 <div className='header'>
@@ -38,25 +38,25 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
                      <CardGroup className='mt-5'>
                      <div className="col-lg-4 col-md-4 col-sm-6 text-center">
                         <Card className='mx-5 pb-5 dashIcon' style={{ backgroundColor: 'transparent', border: 'none' }}> 
-                            <Link to={this.props.isAdmin ? '/admin/todo' : 'todo'} className='mx-2 py-2' style={{ textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
+                            <Link to={localStorage.getItem('isAdmin') === 'true' ? '/admin/todo' : 'todo'} className='mx-2 py-2' style={{ textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
                                 <GoTasklist size={'100px'}/></Link>
                             
-                            <Link to={this.props.isAdmin ? '/admin/todo' : 'todo'} className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}><br/>To Do List</Link>
+                            <Link to={localStorage.getItem('isAdmin') === 'true' ? '/admin/todo' : 'todo'} className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}><br/>To Do List</Link>
                         </Card>
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-6 text-center">
                         <Card className='mx-5 pb-5 dashIcon' style={{ backgroundColor: 'transparent', border: 'none' }}>
-                            <Link to={this.props.isAdmin ? '/admin/table' : 'moodlog'} className='mx-2 py-2' style={{textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
+                            <Link to={localStorage.getItem('isAdmin') === 'true' ? '/admin/table' : 'moodlog'} className='mx-2 py-2' style={{textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
                                 <MdOutlineMood size={'100px'}/></Link>
-                            <Link to={this.props.isAdmin ? '/admin/table' : 'moodlog'} className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}>
+                            <Link to={localStorage.getItem('isAdmin') === 'true' ? '/admin/table' : 'moodlog'} className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}>
                                 <br/>Mood Entries</Link>
                         </Card>
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-6 text-center">
                         <Card className='mx-5 pb-5 dashIcon' style={{ backgroundColor: 'transparent', border: 'none' }}>       
-                            <Link to={this.props.isAdmin ? '/admin/chart' : 'chart'} className='mx-2 py-2' style={{textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
+                            <Link to={localStorage.getItem('isAdmin') === 'true' ? '/admin/chart' : 'chart'} className='mx-2 py-2' style={{textDecoration: 'none', color: '#FF8C00', opacity: '0.6'}}>
                                 <RiLineChartLine size={'100px'}/></Link>
-                            <Link to={this.props.isAdmin ? '/admin/chart' : 'chart'} className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}>
+                            <Link to={localStorage.getItem('isAdmin') === 'true' ? '/admin/chart' : 'chart'} className='mx-1 pb-5' style={{fontSize: '30px', textDecoration: 'none', color: 'black', opacity: '0.6'}}>
                                 <br/>Mood Chart</Link>
                         </Card> 
                         </div>
