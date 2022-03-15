@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Button} from 'reactstrap';
+import APIURL from '../../helpers/environment';
 
 
 interface ToDoTableProps {
@@ -27,7 +28,7 @@ class ToDoTable extends React.Component<ToDoTableProps, ToDoTableState> {
     }
 
     fetchToDo = () => {
-        fetch(`http://localhost:4000/todo/`, {
+        fetch(`${APIURL}/todo/`, {
           method: 'GET',
           headers: new Headers({
             'Content-Type': 'application/json',
@@ -43,7 +44,7 @@ class ToDoTable extends React.Component<ToDoTableProps, ToDoTableState> {
 
 
       deleteToDoEntry = (toDoEntry: ToDoInterface) => {
-        fetch(`http://localhost:4000/moodlog/${toDoEntry.id}`, {
+        fetch(`${APIURL}/moodlog/${toDoEntry.id}`, {
           method: 'DELETE',
           headers: new Headers({
             'Content-Type': 'application/json',

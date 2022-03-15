@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ModalTitle } from 'react-bootstrap';
 import { FormGroup, Form, Input, Label, Button, Container, Modal, ModalHeader, } from 'reactstrap';
+import APIURL from '../../../helpers/environment';
 
 
 interface MoodEditProps {
@@ -53,7 +54,7 @@ class MoodEdit extends React.Component<MoodEditProps, MoodEditState> {
 
     handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
         event.preventDefault();
-        fetch(`http://localhost:4000/moodlog/${this.props.moodEntryToUpdate.id}`, {
+        fetch(`${APIURL}/moodlog/${this.props.moodEntryToUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({
               date: this.state.date,

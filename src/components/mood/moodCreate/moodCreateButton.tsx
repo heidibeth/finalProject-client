@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'reactstrap';
+import APIURL from '../../../helpers/environment';
 
 
 
@@ -8,7 +9,7 @@ export const MoodCreateButton=(props:any)=>{
     const navigate = useNavigate();
     const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        fetch('http://localhost:4000/moodlog/', {
+        fetch(`${APIURL}/moodlog/`, {
             method: 'POST',
             body: JSON.stringify({
               date: props.date,

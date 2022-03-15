@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Form, FormGroup, Label, Input, Button, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import APIURL from '../../../helpers/environment';
 
 
 interface SignupProps { 
@@ -32,7 +33,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
 
     handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
         event.preventDefault();
-        fetch('http://localhost:4000/user/register', {
+        fetch(`${APIURL}/user/register`, {
             method: 'POST',
             body: JSON.stringify({
               firstName: this.state.firstName,

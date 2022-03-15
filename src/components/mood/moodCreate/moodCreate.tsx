@@ -3,6 +3,7 @@ import { Container, Form, FormGroup, Label, Input } from 'reactstrap';
 import { MoodCreateButton } from './moodCreateButton';
 import {NavigationButton} from '../../../Navigation'
 import { Col, Row } from 'react-bootstrap';
+import APIURL from '../../../helpers/environment';
 
 interface MoodCreateProps {
     token: string,
@@ -40,7 +41,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
 
     handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
         event.preventDefault();
-        fetch('http://localhost:4000/moodlog/', {
+        fetch(`${APIURL}/moodlog/`, {
             method: 'POST',
             body: JSON.stringify({
               date: this.state.date,
