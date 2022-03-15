@@ -5,6 +5,7 @@ import MoodEdit from '../moodEdit/moodEdit';
 import { IGetMoodMine } from '../moodInex.interface';
 
 import {NavigationButton} from '../../../Navigation'
+import APIURL from '../../../helpers/environment';
 interface MoodTableProps {
   token: string
   URL: string
@@ -58,7 +59,7 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
     };
 
     deleteMoodEntry = (moodEntry: IGetMoodMine) => {
-      fetch(`http://localhost:4000/moodlog/${moodEntry.id}`, {
+      fetch(`${APIURL}/moodlog/${moodEntry.id}`, {
         method: 'DELETE',
         headers: new Headers({
           'Content-Type': 'application/json',

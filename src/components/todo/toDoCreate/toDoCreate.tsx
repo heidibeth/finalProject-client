@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Form, Button, Input, Container} from 'reactstrap';
+import APIURL from '../../../helpers/environment';
 // import {NavigationButton} from '../../../Navigation'
 
 interface ToDoCreateProps {
@@ -53,7 +54,7 @@ class ToDoCreate extends React.Component<ToDoCreateProps, ToDoCreateState> {
     }
 
     fetchAllTodos() {
-        fetch('http://localhost:4000/todo/todos', {
+        fetch(`${APIURL}/todo/todos`, {
             method: 'GET',
             headers: new Headers({
               'Content-Type': 'application/json',
@@ -75,7 +76,7 @@ class ToDoCreate extends React.Component<ToDoCreateProps, ToDoCreateState> {
 
     handleUpdateTodo = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        fetch(`http://localhost:4000/todo/${this.state.todoToEdit.id}`, {
+        fetch(`${APIURL}/todo/${this.state.todoToEdit.id}`, {
             method: 'PUT',
             body: JSON.stringify({
               toDo: this.state.itemToAdd,
@@ -101,7 +102,7 @@ class ToDoCreate extends React.Component<ToDoCreateProps, ToDoCreateState> {
     }
 
     handleTodoDelete = (id: any) => {
-        fetch(`http://localhost:4000/todo/${id}`, {
+        fetch(`${APIURL}/todo/${id}`, {
             method: 'DELETE',
             headers: new Headers({
               'Content-Type': 'application/json',
