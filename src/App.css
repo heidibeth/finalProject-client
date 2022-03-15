@@ -38,6 +38,10 @@ ul {
   width: 87%;
 }
 
+Bar {
+  width: 70vw;
+}
+
 
 @media only screen and (max-width:768px){
   .moodForm{

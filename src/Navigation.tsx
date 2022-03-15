@@ -4,8 +4,7 @@ import { Button } from 'reactstrap';
 
 interface NavigationButtonProps{
     path: string,
-    buttonTitle: string,
-    buttonColor: "danger"| "success"
+    buttonTitle: string
 }
 
 export const NavigationButton=(props:NavigationButtonProps)=>{
@@ -16,7 +15,8 @@ export const NavigationButton=(props:NavigationButtonProps)=>{
     const handleSubmit =()=> navigate(props.path)
     return (
         <div>
-            <Button className='mb-5' color={props.buttonColor} onClick={handleSubmit}>{props.buttonTitle}</Button>
+            <Button className='mb-5' 
+            style={{backgroundColor: 'black'}} onClick={handleSubmit}>{props.buttonTitle}</Button>
         </div>
         )
 }

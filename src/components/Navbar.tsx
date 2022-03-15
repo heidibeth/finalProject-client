@@ -6,6 +6,7 @@ import { BiHomeSmile } from 'react-icons/bi';
 import { RiLineChartLine } from 'react-icons/ri';
 import { FiLogOut } from 'react-icons/fi';
 import { BiHealth } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 
 
@@ -51,13 +52,19 @@ render() {
                 <Nav.Link href="/"><BiHomeSmile/>Home</Nav.Link>
               </NavItem>
               <NavItem>
-                <Nav.Link href="todo"><GoTasklist/>To Do List</Nav.Link>
+                <Nav.Link>
+                  <Link to={localStorage.getItem('isAdmin') === 'true' ? '/admin/todo' : 'todo'} style={{textDecoration: 'none', color: 'inherit'}}><GoTasklist/>To Do List</Link>
+                </Nav.Link>
               </NavItem>
               <NavItem>
-                <Nav.Link href="moodlog"><MdOutlineMood/>Mood Log</Nav.Link>
+                <Nav.Link>
+                  <Link to={localStorage.getItem('isAdmin') === 'true' ? '/admin/table' : 'moodlog'} style={{textDecoration: 'none', color: 'inherit'}}><MdOutlineMood/>Mood Log</Link>
+                </Nav.Link>
               </NavItem>
               <NavItem>
-                <Nav.Link href="chart"><RiLineChartLine />Mood Chart</Nav.Link>
+                <Nav.Link>
+                  <Link to={localStorage.getItem('isAdmin') === 'true' ? '/admin/chart' : 'chart'} style={{textDecoration: 'none', color: 'inherit'}}><RiLineChartLine />Mood Chart</Link>
+                </Nav.Link>
               </NavItem>
               <NavItem>
                 { localStorage.getItem("token") && <Nav.Link href='/' style={{ textDecoration: 'none' }} className="nav-link" onClick={this.props.clearToken}><FiLogOut/> Logout</Nav.Link> }

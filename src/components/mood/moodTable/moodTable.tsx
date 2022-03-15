@@ -171,7 +171,7 @@ class MoodTable extends React.Component<MoodTableProps, MoodTableState> {
             </thead>
             <tbody>{this.moodTableMapper()}</tbody>
           </Table>
-        <NavigationButton path="/moodlog" buttonColor="success" buttonTitle="Create New Mood Entry"/>
+        <NavigationButton path="/moodlog" buttonTitle="Create New Mood Entry"/>
         </div>
       </Container>
       { this.state.isOpen?

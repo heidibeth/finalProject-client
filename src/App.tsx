@@ -93,7 +93,7 @@ function App() {
             <Route path="register" element={<Signup updateIsAdmin={updateIsAdmin} updateToken={updateToken} />} /> </> )}
 
         {sessionToken===localStorage.getItem('token') ? 
-          <Route path='todo/*' element={
+          <Route path='todo' element={
           <ToDoIndex token={sessionToken} URL='http://localhost:4000/todo/'
            />}/>
         : <> <Route path='/' element={

@@ -22,8 +22,7 @@ import { IGetMoodMine } from '../mood/moodInex.interface';
   export const options = {
     plugins: {
       title: {
-        display: true,
-        text: 'Chart.js Bar Chart - Stacked',
+        display: true
       },
     },
     responsive: true,
@@ -48,20 +47,10 @@ import { IGetMoodMine } from '../mood/moodInex.interface';
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
+        label: 'Moods Over Time',
         data: [0, 0, 0 , 0, 0],
         backgroundColor: 'rgb(255, 99, 132)',
       },
-    //   {
-    //     label: 'Dataset 2',
-    //     data: labels.map(() => 100),
-    //     backgroundColor: 'rgb(75, 192, 192)',
-    //   },
-    //   {
-    //     label: 'Dataset 3',
-    //      data: labels.map(() => 100),
-    //     backgroundColor: 'rgb(53, 162, 235)',
-    //   },
     ],
   };
 
@@ -140,8 +129,8 @@ class MoodChart extends React.Component<MoodChartProps, MoodChartState> {
     render() {
         return (
           <div style={{ marginBottom: "150px"}}>
-            <h2>Line Example</h2>
-            {this.state.showChart  ? <Bar options={options} data={this.state.newData} redraw={true}/> : <h3>Loading...</h3>}
+            <h2 className='mt-3'>Mood Chart</h2>
+            {this.state.showChart  ? <Bar options={options} style={{width: '70vw'}} data={this.state.newData} redraw={true}/> : <h3>Loading...</h3>}
             
           </div>
         );

@@ -252,7 +252,7 @@ class MoodCreate extends React.Component<MoodCreateProps, MoodCreateState> {
                 </FormGroup>
                   <MoodCreateButton token={this.props.token} date={this.state.date} mood={this.state.mood} struggleWith={this.state.struggleWith} gratefulFor={this.state.gratefulFor} goalForWeek={this.state.goalForWeek} summaryOfDay={this.state.summaryOfDay} />
                     
-                    <NavigationButton path="/table" buttonColor="success" buttonTitle="View All Mood Entries"/>
+                    <NavigationButton path="/table" buttonTitle="View All Mood Entries"/>
             </Container>
           </div>
          );
