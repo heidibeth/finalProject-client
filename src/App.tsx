@@ -63,9 +63,9 @@ function App() {
 
         <Route path="/admin/table" element={isAdmin ? <MoodTable URL='http://localhost:4000/admin/all-moods' token={sessionToken} /> : setTimeout(() => <Navigate to="/" replace/>, 1000)} />
 
-        <Route path="/admin/chart" element={sessionToken ? <MoodChart URL='http://localhost:4000/admin/all-moods' token={sessionToken} />:setTimeout(()=> <Navigate to="/" replace/>, 1000)} />
+        <Route path="/admin/chart" element={isAdmin ? <MoodChart URL='http://localhost:4000/admin/all-moods' token={sessionToken} />:setTimeout(()=> <Navigate to="/" replace/>, 1000)} />
 
-        <Route path="/admin/todo" element={sessionToken ? <ToDoCreate URL='http://localhost:4000/admin/all-todos' token={sessionToken} /> : setTimeout(()=><Navigate to="/" replace/>, 1000)} />
+        <Route path="/admin/todo" element={isAdmin ? <ToDoCreate URL='http://localhost:4000/admin/all-todos' token={sessionToken} /> : setTimeout(()=><Navigate to="/" replace/>, 1000)} />
 
         <Route path="/todo" element={sessionToken ? <ToDoCreate URL='http://localhost:4000/todo/' token={sessionToken} /> : <Navigate to="/" replace/>} />
 
