@@ -16,7 +16,7 @@ export const NavigationButton=(props:NavigationButtonProps)=>{
     return (
         <div>
             <Button className='mb-5' 
-            style={{backgroundColor: 'black'}} onClick={handleSubmit}>{props.buttonTitle}</Button>
+            style={{backgroundColor: 'rgb(126, 207, 192)', border: 'rgb(126, 207, 192)', opacity: '0.7'}} onClick={handleSubmit}>{props.buttonTitle}</Button>
         </div>
         )
 }
