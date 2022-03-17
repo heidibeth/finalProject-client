@@ -23,7 +23,7 @@ The goal of this app was to aid people who are struggling with their mental heal
 
 ## Installation
 ***
-$ git clone https://github.com/heidibeth/finalProject-client.git
-$ cd ../seizeTheDay/client
-$ npm install
-$ npm start
+* git clone https://github.com/heidibeth/finalProject-client.git
+* cd ../seizeTheDay/client
+* npm install
+* npm start
